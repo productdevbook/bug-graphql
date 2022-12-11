@@ -11,7 +11,7 @@ export class BasicProvider {
     @Inject(CONTEXT) private ctx: { request: Request },
     private storage: HStorage,
   ) {
-    console.log('storage', storage)
+    console.log('storage', storage.hello())
   }
 
   public getContextKeys(): string[] {

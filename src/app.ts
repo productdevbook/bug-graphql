@@ -10,13 +10,24 @@ import { Scope, createApplication } from 'graphql-modules'
 import { basicModule } from './modules/basic'
 import { HStorage } from './storage'
 
+function test() {
+  const storage: HStorage = {
+    hello() {
+      return 'hello'
+    },
+  }
+  return storage
+}
+
+
 export function createGraphQLApp() {
+  const storage = test()
   return createApplication({
     modules: [basicModule],
     providers: [
       {
         provide: HStorage,
-        useValue: 'aaa',
+        useValue: storage,
         scope: Scope.Singleton,
       },
     ],
